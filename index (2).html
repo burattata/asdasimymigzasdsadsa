@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ff99cc; 
+            background-image: url('https://www.transparenttextures.com/patterns/flowers.png'); 
+            color: white; 
+            margin: 0;
+            padding: 0;
+        }
+        #gif-container {
+            margin-top: 20px;
+        }
+        #gif-container img {
+            border: 5px solid white;
+            border-radius: 10px; 
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px; 
+            border: none;
+            outline: none;
+            transition: all 0.3s ease-in-out; 
+            background-color: #ff6699; 
+        }
+        button:hover {
+            transform: scale(1.05); 
+        }
+        #yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <div id="gif-container">
+        
+        <img id="valentine-gif" src="https://i.pinimg.com/originals/8c/8a/1d/8c8a1d6fdafde71024be635fb1a0876e.gif" alt="Frustrated Cat GIF" width="200">
+    </div>
+    <button id="yes-btn" onclick="handleYes()">Yes</button>
+    <button id="no-btn" onclick="handleNo()">No</button>
+    <p id="message"></p>
+
+    <script>
+        let yesBtnSize = 100;
+        let noClicks = 0;
+
+        function handleYes() {
+            document.getElementById("yes-btn").innerText = "I WUV YOU MWMAWMMWAMW";
+            document.getElementById("yes-btn").style.fontSize = "24px";
+            document.getElementById("yes-btn").style.padding = "20px 40px";
+            document.getElementById("no-btn").style.display = "none";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("valentine-gif").src = "https://i.pinimg.com/originals/3c/e8/84/3ce884bb29ad1909a2c253354497420f.gif";
+            document.getElementById("message").innerText = "YOU PICKED THE RIGHT CHOICE!!!!!!";
+            document.getElementById("message").style.display = "block";
+        }
+
+        function handleNo() {
+            if (noClicks >= 15) return;
+            noClicks++;
+            yesBtnSize += 50;
+            document.getElementById("yes-btn").style.fontSize = yesBtnSize + "px";
+            document.getElementById("yes-btn").style.padding = yesBtnSize / 5 + "px " + yesBtnSize / 2 + "px";
+            if (yesBtnSize > window.innerHeight || yesBtnSize > window.innerWidth) {
+                document.getElementById("yes-btn").style.fontSize = "24px";
+                document.getElementById("yes-btn").style.padding = "20px 40px";
+                handleYes();
+            } else {
+                const messages = [
+                    "SYSTEM ERROR!!!!!!",
+                    "Are you sure",
+                    "Don't do this to me :(",
+                    "You're breaking my heart",
+                    "I'm gonna cry...",
+                    "Keep clicking!"
+                ];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                document.getElementById("message").innerText = randomMessage;
+                document.getElementById("message").style.display = "block";
+            }
+            document.getElementById("valentine-gif").src = "https://i.pinimg.com/originals/17/62/0a/17620a76ae319084b457177d73dcc5ab.gif";
+        }
+    </script>
+</body>
+</html>
